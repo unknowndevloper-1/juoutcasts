@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- FIXED: Switched to standard responsive viewport. This is MANDATORY for Razorpay to trigger its mobile UI! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JU Outcasts | Contribute</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Special styles to make Razorpay seamlessly fill the screen */
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Locks the body to exactly the height of the window */
+            margin: 0;
+            overflow: hidden; /* Prevents double scrollbars */
+            background-color: #f4f4f9;
+        }
+
+        main {
+            flex: 1; /* Tells the main block to stretch and fill all space under the header */
+            padding: 0; 
+            max-width: 100%;
+            width: 100%;
+            display: flex;
+        }
+
+        .razorpay-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- Header Fixes for Mobile --- */
+        /* Since we removed the 1200px enforcer for this page, we need to ensure the header wraps nicely on small phone screens */
+        @media (max-width: 850px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+                gap: 10px;
+            }
+            .header-left img { height: 40px; }
+            .header-left a h1 { font-size: 1.2rem; }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.95rem;
+            }
+            .header-right {
+                display: none; /* Hides the JU Banner on phones to save maximum space for Razorpay */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html">
+                <img src="assets/outcasts.png" alt="JU Outcasts Logo">
+                <h1>JU Outcasts</h1>
+            </a>
+        </div>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="members.html">Members</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="wings.html">Wings</a>
+            <a href="cheers.html">Cheers</a>
+            <a href="join.html">Join Us</a>
+            <a href="contribute.html" class="active">Contribute</a>
+        </nav>
+        <div class="header-right"><img src="assets/JU.png" alt="JU Banner"></div>
+    </header>
+
+    <main>
+        <!-- Embedded Razorpay Payment Link -->
+        <iframe src="https://rzp.io/rzp/juoutcasts" class="razorpay-iframe" title="Razorpay Secure Payment" allow="payment"></iframe>
+    </main>
+
+</body>
+</html>
